@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
 
 import PyPDF2
 
@@ -29,10 +27,6 @@ def getTotalWordCount(pdf_file):
         totalcount += len(wordlist)
 
     return totalcount
-
-
-# In[ ]:
-
 
 
 
