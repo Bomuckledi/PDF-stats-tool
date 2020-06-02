@@ -14,30 +14,30 @@ def getTotalWordCount(pdf_file):
     totalcount = 0
     
     #open the PDF file in read
-    pdfFileObj = open(pdf_file, 'rb')
-    
-    #create a PdfFileReader object for PyPDF2 to work with
-    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-    
-    #start a for loop that will run over each page of the PDF
-    for x in range(pdfReader.numPages - 1):
-        
-        #extract the text from each page
-        text = pdfReader.getPage(x).extractText()
-        # create a list containing each word on the page
-        wordlist = text.split()
-        #add the number of words on the page to the total count
-        totalcount += len(wordlist)
+    with open(pdf_file, 'rb') as pdfFileObj:
 
-    return totalcount
+        #create a PdfFileReader object for PyPDF2 to work with
+        pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+
+        #start a for loop that will run over each page of the PDF
+        for x in range(pdfReader.numPages - 1):
+
+            #extract the text from each page
+            text = pdfReader.getPage(x).extractText()
+            # create a list containing each word on the page
+            wordlist = text.split()
+            #add the number of words on the page to the total count
+            totalcount += len(wordlist)
+
+        return totalcount
 
 
 def getPageCount(pdf_file):
     
-    pdfFileObj = open(pdf_file, 'rb')
-    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-    pages = pdfReader.numPages
-    return pages
+    with open(pdf_file, 'rb') as pdfFileObj:
+        pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+        pages = pdfReader.numPages
+        return pages
 
 #set up three lists to hold the data - file names (using glob to find all
 # ... PDFs in directory, page count, word count
