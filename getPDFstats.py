@@ -51,7 +51,7 @@ for n in file_list:
     wordcount_list.append(getTotalWordCount(n))
 
 # write lists to results CSV file
-with open("results.csv", 'w') as file:
+with open("results.csv", 'w', newline = "") as file:
     writer = csv.writer(file, dialect="excel")
     writer.writerow(file_list)
     writer.writerow(pagecount_list)
